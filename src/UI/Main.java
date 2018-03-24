@@ -72,7 +72,7 @@ public class Main extends javax.swing.JFrame {
         absorbent.setViewportView(tababsorbent);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("PRO Accountig");
+        setTitle("PRO Accounting");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
