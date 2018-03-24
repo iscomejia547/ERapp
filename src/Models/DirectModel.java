@@ -6,6 +6,7 @@
 package Models;
 
 import Objects.Account;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,12 +15,15 @@ import javax.swing.table.DefaultTableModel;
  * @author jf_me
  */
 public class DirectModel {
-    private Object[] header;
+    private final Object[] header={"Cuenta", "C1", "C2"};
     private List<Account> accounts;
     private Object[][] data;
     private String unit;
 
     public DirectModel() {
+        accounts=new ArrayList<>();
+        unit="C$";
+        initialize();
     }
 
     public String getUnit() {
@@ -28,10 +32,6 @@ public class DirectModel {
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public void setHeader(Object[] header) {
-        this.header = header;
     }
     
     private void initialize(){
@@ -67,7 +67,7 @@ public class DirectModel {
         }
         int j, k, i=0;
         for (Account x: accounts) {
-            if(x.getType()==Account.CALC_TYPE.EXTERNAL_CALC){
+            if(x.getType()==Account.CALC_TYPE.INTERNAL_CALC){
                 k=1;j=2;
             }else{
                 j=1;k=2;
@@ -78,6 +78,7 @@ public class DirectModel {
         }
     }
     public DefaultTableModel getModel(){
+        refreshState();
         return new DefaultTableModel(data, header);
     }
 }

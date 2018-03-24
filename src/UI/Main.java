@@ -20,6 +20,8 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        dmod=new DirectModel();
+        amod=new AbsorbentModel();
         initComponents();
     }
 
@@ -70,6 +72,7 @@ public class Main extends javax.swing.JFrame {
         absorbent.setViewportView(tababsorbent);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PRO Accountig");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -81,12 +84,14 @@ public class Main extends javax.swing.JFrame {
         btnpane.add(jButton1);
 
         getContentPane().add(btnpane, java.awt.BorderLayout.PAGE_END);
+
+        TabPane.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         getContentPane().add(TabPane, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
         mainmn.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Opciones");
         mainmn.add(jMenu2);
 
         setJMenuBar(mainmn);
@@ -98,7 +103,8 @@ public class Main extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         TabPane.addTab("Costeo Directo", null, direct, "Estado de resultados por costeo directo");
         TabPane.addTab("Costeo Absorbente", null, absorbent, "Estado de resultados por costeo absorbente");
-        tabdirect.setModel();
+        tabdirect.setModel(dmod.getModel());
+        tababsorbent.setModel(amod.getModel());
     }//GEN-LAST:event_formWindowOpened
 
     /**

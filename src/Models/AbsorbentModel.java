@@ -6,6 +6,7 @@
 package Models;
 
 import Objects.Account;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +21,7 @@ public class AbsorbentModel {
     private String unit;
 
     public AbsorbentModel() {
+        accounts=new ArrayList<>();
         initialize();
         unit="C$";       
     }
@@ -65,7 +67,7 @@ public class AbsorbentModel {
         }
         int j, k, i=0;
         for (Account x: accounts) {
-            if(x.getType()==Account.CALC_TYPE.EXTERNAL_CALC){
+            if(x.getType()==Account.CALC_TYPE.INTERNAL_CALC){
                 k=1;j=2;
             }else{
                 j=1;k=2;
@@ -77,6 +79,7 @@ public class AbsorbentModel {
     }
     
     public DefaultTableModel getModel(){
+        refreshState();
         return new DefaultTableModel(data, header);
     }
 }
