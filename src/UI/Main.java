@@ -5,6 +5,8 @@
  */
 package UI;
 
+import Models.AbsorbentModel;
+import Models.DirectModel;
 import javax.swing.JFrame;
 
 /**
@@ -12,7 +14,8 @@ import javax.swing.JFrame;
  * @author jf_me
  */
 public class Main extends javax.swing.JFrame {
-
+    private DirectModel dmod;
+    private AbsorbentModel amod;
     /**
      * Creates new form Main
      */
@@ -93,9 +96,9 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        TabPane.addTab("Costeo Directo", null, tabdirect, "Estado de resultados por costeo directo");
-        TabPane.addTab("Costeo Absorbente", null, tababsorbent, "Estado de resultados por costeo absorbente");
-        
+        TabPane.addTab("Costeo Directo", null, direct, "Estado de resultados por costeo directo");
+        TabPane.addTab("Costeo Absorbente", null, absorbent, "Estado de resultados por costeo absorbente");
+        tabdirect.setModel();
     }//GEN-LAST:event_formWindowOpened
 
     /**

@@ -76,7 +76,7 @@ public class AbsorbentModel {
         }
     }
     
-    private DefaultTableModel getModel(){
+    public DefaultTableModel getModel(){
         return new DefaultTableModel(data, header);
     }
 }

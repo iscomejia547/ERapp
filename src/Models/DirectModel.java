@@ -77,7 +77,7 @@ public class DirectModel {
             data[i][k]=String.format("%.2f"+unit, x.getQty());i++;
         }
     }
-    private DefaultTableModel getModel(){
+    public DefaultTableModel getModel(){
         return new DefaultTableModel(data, header);
     }
 }
