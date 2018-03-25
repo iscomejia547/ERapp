@@ -8,6 +8,7 @@ package UI;
 import Models.AbsorbentModel;
 import Models.DirectModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -81,6 +82,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         jButton1.setText("Insertar Datos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         btnpane.add(jButton1);
 
         getContentPane().add(btnpane, java.awt.BorderLayout.PAGE_END);
@@ -106,6 +112,13 @@ public class Main extends javax.swing.JFrame {
         tabdirect.setModel(dmod.getModel());
         tababsorbent.setModel(amod.getModel());
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FillDialog dlg = new FillDialog(this, true);
+        dlg.setAmod(amod);
+        dlg.setDmod(dmod);
+        dlg.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
