@@ -401,10 +401,12 @@ public class FillDialog extends javax.swing.JDialog {
         }
         String cfp=txtCFdP.getText();
         String cfav=txtCFAyM.getText();
-        if(!noEmpty(ventas, pdv, ivi,prod,cnorm,cvp,cvav,cfp,cfav)){
+        String args[]={ventas, pdv, ivi, prod, cnorm, cvp,cvav, cfp,cfav};
+        if(!Help.noEmpty(args)){
             JOptionPane.showMessageDialog(this, "Error\nNo se han llenado todos los campos", "",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
     }//GEN-LAST:event_submitbtnActionPerformed
     
     private void noLetters(java.awt.event.KeyEvent evt){
@@ -424,10 +426,7 @@ public class FillDialog extends javax.swing.JDialog {
         }
     }
     
-    private boolean noEmpty(String a, String b, String c, String d,String e, String f, String g, String h, String i){
-        String[] args={a,b,c,d,e,f,g,h,i};
-        return Help.noEmpty(args);
-    }
+   
     
     /**
      * @param args the command line arguments

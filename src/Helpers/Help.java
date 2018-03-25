@@ -18,4 +18,13 @@ public class Help {
         }
         return true;
     }
+    public float[] parseDataVector(String[] t){
+        float[] data=new float[t.length];
+        for (int i = 0; i < data.length; i++) {
+            data[i]=Float.parseFloat(t[i]);
+        }
+        return data;
+    }
+    
+    
 }
