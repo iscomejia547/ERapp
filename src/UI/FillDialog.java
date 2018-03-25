@@ -5,8 +5,10 @@
  */
 package UI;
 
+import Helpers.Help;
 import Models.AbsorbentModel;
 import Models.DirectModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -64,9 +66,9 @@ public class FillDialog extends javax.swing.JDialog {
         rbtntot = new javax.swing.JRadioButton();
         txtCVAyMund = new javax.swing.JFormattedTextField();
         txtCVAyMtot = new javax.swing.JFormattedTextField();
-        txtxCFdP = new javax.swing.JFormattedTextField();
+        txtCFdP = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtCVAyM = new javax.swing.JFormattedTextField();
+        txtCFAyM = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Formulario");
@@ -77,6 +79,11 @@ public class FillDialog extends javax.swing.JDialog {
         });
 
         submitbtn.setText("Enviar");
+        submitbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitbtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(submitbtn);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -279,10 +286,10 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         jPanel2.add(txtCVAyMtot, gridBagConstraints);
 
-        txtxCFdP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtxCFdP.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCFdP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txtCFdP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtxCFdPKeyTyped(evt);
+                txtCFdPKeyTyped(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -291,7 +298,7 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 160;
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
-        jPanel2.add(txtxCFdP, gridBagConstraints);
+        jPanel2.add(txtCFdP, gridBagConstraints);
 
         jLabel11.setText("Costo Fijo de Adm. y Ventas");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -300,10 +307,10 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
         jPanel2.add(jLabel11, gridBagConstraints);
 
-        txtCVAyM.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtCVAyM.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCFAyM.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txtCFAyM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCVAyMKeyTyped(evt);
+                txtCFAyMKeyTyped(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -312,7 +319,7 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 160;
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
-        jPanel2.add(txtCVAyM, gridBagConstraints);
+        jPanel2.add(txtCFAyM, gridBagConstraints);
 
         jScrollPane1.setViewportView(jPanel2);
 
@@ -371,13 +378,34 @@ public class FillDialog extends javax.swing.JDialog {
         noLetters(evt);
     }//GEN-LAST:event_txtCVAyMtotKeyTyped
 
-    private void txtxCFdPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtxCFdPKeyTyped
+    private void txtCFdPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCFdPKeyTyped
         noLetters(evt);
-    }//GEN-LAST:event_txtxCFdPKeyTyped
+    }//GEN-LAST:event_txtCFdPKeyTyped
 
-    private void txtCVAyMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCVAyMKeyTyped
+    private void txtCFAyMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCFAyMKeyTyped
         noLetters(evt);
-    }//GEN-LAST:event_txtCVAyMKeyTyped
+    }//GEN-LAST:event_txtCFAyMKeyTyped
+
+    private void submitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbtnActionPerformed
+        String ventas=txtventas.getText();
+        String pdv=txtventas.getText();
+        String ivi=txtIVIn.getText();
+        String prod=txtprod.getText();
+        String cnorm=txtCapNorm.getText();
+        String cvp=txtCVdP.getText();
+        String cvav=null;
+        if(CVAVbtngrp.isSelected(rbtnund.getModel())){
+            cvav=txtCVAyMund.getText();
+        }else if(CVAVbtngrp.isSelected(rbtntot.getModel())){
+            cvav=txtCVAyMtot.getText();
+        }
+        String cfp=txtCFdP.getText();
+        String cfav=txtCFAyM.getText();
+        if(!noEmpty(ventas, pdv, ivi,prod,cnorm,cvp,cvav,cfp,cfav)){
+            JOptionPane.showMessageDialog(this, "Error\nNo se han llenado todos los campos", "",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_submitbtnActionPerformed
     
     private void noLetters(java.awt.event.KeyEvent evt){
         char key=evt.getKeyChar();
@@ -396,6 +424,10 @@ public class FillDialog extends javax.swing.JDialog {
         }
     }
     
+    private boolean noEmpty(String a, String b, String c, String d,String e, String f, String g, String h, String i){
+        String[] args={a,b,c,d,e,f,g,h,i};
+        return Help.noEmpty(args);
+    }
     
     /**
      * @param args the command line arguments
@@ -456,7 +488,8 @@ public class FillDialog extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbtntot;
     private javax.swing.JRadioButton rbtnund;
     private javax.swing.JButton submitbtn;
-    private javax.swing.JFormattedTextField txtCVAyM;
+    private javax.swing.JFormattedTextField txtCFAyM;
+    private javax.swing.JFormattedTextField txtCFdP;
     private javax.swing.JFormattedTextField txtCVAyMtot;
     private javax.swing.JFormattedTextField txtCVAyMund;
     private javax.swing.JFormattedTextField txtCVdP;
@@ -465,6 +498,5 @@ public class FillDialog extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txtpdeventas;
     private javax.swing.JFormattedTextField txtprod;
     private javax.swing.JFormattedTextField txtventas;
-    private javax.swing.JFormattedTextField txtxCFdP;
     // End of variables declaration//GEN-END:variables
 }

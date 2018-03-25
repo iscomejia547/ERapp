@@ -10,5 +10,12 @@ package Helpers;
  * @author jf_me
  */
 public class Help {
-    
+    public static boolean noEmpty(String[] t){
+        for (String s : t) {
+            if(s.isEmpty() || s==null){
+                return false;
+            }
+        }
+        return true;
+    }
 }
