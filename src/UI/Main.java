@@ -118,6 +118,8 @@ public class Main extends javax.swing.JFrame {
         dlg.setAmod(amod);
         dlg.setDmod(dmod);
         dlg.setVisible(true);
+        tabdirect.setModel(dmod.getModel());
+        tababsorbent.setModel(amod.getModel());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

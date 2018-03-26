@@ -34,6 +34,10 @@ public class AbsorbentModel {
         this.unit = unit;
     }
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
     private void initialize(){
         int i=0;Account e;
         e=new Account(++i, "Ventas", 0.0f, Account.CALC_TYPE.EXTERNAL_CALC);
@@ -45,6 +49,8 @@ public class AbsorbentModel {
         e=new Account(++i, "Disponible", 0.0f, Account.CALC_TYPE.INTERNAL_CALC);
         accounts.add(e);
         e=new Account(++i, "Inventario Final", 0.0f, Account.CALC_TYPE.INTERNAL_CALC);
+        accounts.add(e);
+        e=new Account(++i, "Costo de venta antes de variación", 0.0f, Account.CALC_TYPE.INTERNAL_CALC);
         accounts.add(e);
         e=new Account(++i, "Ajuste por Variación", 0.0f, Account.CALC_TYPE.INTERNAL_CALC);
         accounts.add(e);
@@ -77,7 +83,13 @@ public class AbsorbentModel {
             data[i][k]=String.format("%.2f"+unit, x.getQty());i++;
         }
     }
-    
+    public void updateData(float[] t){
+        int i=0;
+        for (Account x:accounts) {
+            x.setQty(t[i]);
+            i++;
+        }
+    }
     public DefaultTableModel getModel(){
         refreshState();
         return new DefaultTableModel(data, header);

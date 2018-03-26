@@ -17,11 +17,13 @@ import javax.swing.JOptionPane;
 public class FillDialog extends javax.swing.JDialog {
     private DirectModel dmod;
     private AbsorbentModel amod;
+    private Help h;
     /**
      * Creates new form FillDialog
      */
     public FillDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        h=new Help();
         initComponents();
     }
 
@@ -145,7 +147,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
         jPanel2.add(jLabel8, gridBagConstraints);
 
-        txtventas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtventas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtventasKeyTyped(evt);
@@ -157,7 +158,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
         jPanel2.add(txtventas, gridBagConstraints);
 
-        txtpdeventas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtpdeventas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtpdeventasKeyTyped(evt);
@@ -171,7 +171,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
         jPanel2.add(txtpdeventas, gridBagConstraints);
 
-        txtIVIn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtIVIn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtIVInKeyTyped(evt);
@@ -185,7 +184,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
         jPanel2.add(txtIVIn, gridBagConstraints);
 
-        txtprod.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtprod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtprodKeyTyped(evt);
@@ -199,7 +197,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
         jPanel2.add(txtprod, gridBagConstraints);
 
-        txtCapNorm.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtCapNorm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCapNormKeyTyped(evt);
@@ -213,7 +210,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
         jPanel2.add(txtCapNorm, gridBagConstraints);
 
-        txtCVdP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtCVdP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCVdPKeyTyped(evt);
@@ -255,7 +251,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(1, 5, 1, 5);
         jPanel2.add(rbtntot, gridBagConstraints);
 
-        txtCVAyMund.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtCVAyMund.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCVAyMundActionPerformed(evt);
@@ -273,7 +268,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         jPanel2.add(txtCVAyMund, gridBagConstraints);
 
-        txtCVAyMtot.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtCVAyMtot.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCVAyMtotKeyTyped(evt);
@@ -286,7 +280,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         jPanel2.add(txtCVAyMtot, gridBagConstraints);
 
-        txtCFdP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtCFdP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCFdPKeyTyped(evt);
@@ -307,7 +300,6 @@ public class FillDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(11, 5, 11, 5);
         jPanel2.add(jLabel11, gridBagConstraints);
 
-        txtCFAyM.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtCFAyM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCFAyMKeyTyped(evt);
@@ -325,7 +317,7 @@ public class FillDialog extends javax.swing.JDialog {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(416, 339));
+        setSize(new java.awt.Dimension(448, 439));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -388,14 +380,15 @@ public class FillDialog extends javax.swing.JDialog {
 
     private void submitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbtnActionPerformed
         String ventas=txtventas.getText();
-        String pdv=txtventas.getText();
+        String pdv=txtpdeventas.getText();
         String ivi=txtIVIn.getText();
         String prod=txtprod.getText();
         String cnorm=txtCapNorm.getText();
         String cvp=txtCVdP.getText();
-        String cvav=null;
+        String cvav=null;boolean cvavflag=false; 
         if(CVAVbtngrp.isSelected(rbtnund.getModel())){
             cvav=txtCVAyMund.getText();
+            cvavflag=true;
         }else if(CVAVbtngrp.isSelected(rbtntot.getModel())){
             cvav=txtCVAyMtot.getText();
         }
@@ -406,7 +399,10 @@ public class FillDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Error\nNo se han llenado todos los campos", "",JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+        h.parseDataVector(args);
+        dmod.updateData(h.direct(cvavflag, dmod.getAccounts().size()));
+        amod.updateData(h.asborbent(cvavflag, amod.getAccounts().size()));
+        dispose();
     }//GEN-LAST:event_submitbtnActionPerformed
     
     private void noLetters(java.awt.event.KeyEvent evt){

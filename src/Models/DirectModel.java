@@ -8,6 +8,7 @@ package Models;
 import Objects.Account;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +27,10 @@ public class DirectModel {
         initialize();
     }
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+    
     public String getUnit() {
         return unit;
     }
@@ -45,6 +50,8 @@ public class DirectModel {
         e=new Account(++i, "Disponible", 0.0f, Account.CALC_TYPE.INTERNAL_CALC);
         accounts.add(e);
         e=new Account(++i, "Inventario Final", 0.0f, Account.CALC_TYPE.INTERNAL_CALC);
+        accounts.add(e);
+        e=new Account(++i, "Costo de Producción", 0.0f, Account.CALC_TYPE.EXTERNAL_CALC);
         accounts.add(e);
         e=new Account(++i, "Margen de contribución", 0.0f, Account.CALC_TYPE.EXTERNAL_CALC);
         accounts.add(e);
@@ -77,6 +84,15 @@ public class DirectModel {
             data[i][k]=String.format("%.2f"+unit, x.getQty());i++;
         }
     }
+    public void updateData(float[] t){
+        int i=0;
+        for (Account x:accounts) {
+            x.setQty(t[i]);
+            i++;
+        }
+
+    }
+    
     public DefaultTableModel getModel(){
         refreshState();
         return new DefaultTableModel(data, header);
